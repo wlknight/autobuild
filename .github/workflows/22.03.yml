@@ -13,7 +13,7 @@
 #
 #
 
-name: Lienol-源码
+name: Lienol-22.03
 on:
   workflow_dispatch:
     inputs:
@@ -24,7 +24,6 @@ on:
         type: choice
         options:
           - '19.07'
-          - '22.03'
           - '21.02'
           - 'master'
           - '19.07-test'
@@ -113,9 +112,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [Lienol]
+        target: [22.03]
         
-        # 请勿对 target: [Lienol] 做任何修改
+        # 请勿对 target: [22.03] 做任何修改
         
     steps:
     - name: 密匙检测（密匙为空则退出）
