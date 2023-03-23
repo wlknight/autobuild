@@ -34,6 +34,7 @@ on:
         type: choice
         options:
           - 'x86_64'
+          - 'aarch64'
       CPU_SELECTION:
         description: 'CPU优选,增加编译速度'
         required: true
@@ -64,7 +65,7 @@ on:
         default: 'true'
         type: boolean
       UPLOAD_RELEASE:
-        description: '上传固件到 Github Releases'
+        description: '发布固件到 Github Releases'
         required: false
         default: 'false'
         type: boolean
@@ -74,7 +75,7 @@ on:
         default: 'true'
         type: boolean
       UPDATE_FIRMWARE_ONLINE:
-        description: '增加在线更新固件功能'
+        description: '增加在线更新功能/N1和晶晨系列固件打包'
         required: false
         default: 'true'
         type: boolean
