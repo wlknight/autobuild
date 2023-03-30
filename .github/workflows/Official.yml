@@ -33,10 +33,10 @@ on:
         default: 'x86_64'
         type: choice
         options:
-          - 'aarch64'
-          - 'x86_64'
-          - 'phicomm_k3'
           - '1907-phicomm-k3'
+          - 'aarch64'
+          - 'phicomm_k3'
+          - 'x86_64'
       CPU_SELECTION:
         description: 'CPU优选,增加编译速度'
         required: true
@@ -189,8 +189,8 @@ jobs:
       if: env.REPO_TOKEN
       run: |
         cd openwrt
-        source $BUILD_PATH/$DIY_PART_SH
-        source build/${{ env.FOLDER_NAME }}/common.sh && Diy_Publicarea
+        source ${BUILD_PATH}/common.sh && Diy_zdypartsh
+        source ${BUILD_PATH}/common.sh && Diy_Publicarea
         
     - name: 加载源、补丁和files文件夹
       if: env.REPO_TOKEN

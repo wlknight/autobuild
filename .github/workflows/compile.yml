@@ -10,7 +10,7 @@ on:
     branches:
       - main
     paths:
-      - 'build/Lede/relevance/start'
+      - 'build/Xwrt/relevance/start'
 
 env:
   GITHUB_LINK: https://github.com/${{github.repository}}
@@ -35,7 +35,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [Lede]
+        target: [Xwrt]
 
     steps:    
     - name: 准备结束
@@ -61,8 +61,8 @@ jobs:
         if [[ -n "${{ github.event.workflow }}" ]]; then
           export CPU_SELECTIOY="$(source "${GITHUB_WORKSPACE}/build/${FOLDER_NAME}/settings.ini" && echo "${CPU_SELECTION}")"
         else
-          export CPU_PASSWORD="1679696014"
-          export CPU_OPTIMIZATION="8370"
+          export CPU_PASSWORD="1680119259"
+          export CPU_OPTIMIZATION="E5"
         fi
         source build/${FOLDER_NAME}/common.sh && CPU_Priority
         
@@ -97,7 +97,7 @@ jobs:
     - name: 加载diy-part.sh文件
       run: |
         cd openwrt
-        source $BUILD_PATH/$DIY_PART_SH
+        source ${BUILD_PATH}/common.sh && Diy_zdypartsh
         source ${BUILD_PATH}/common.sh && Diy_Publicarea
         
     - name: 加载源、补丁和files文件夹

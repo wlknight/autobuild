@@ -10,6 +10,10 @@ export Ipv4_ipaddr="192.168.2.2"            # 修改openwrt后台地址(填0为�
 export Netmask_netm="255.255.255.0"         # IPv4 子网掩码（默认：255.255.255.0）(填0为不作修改)
 export Op_name="OpenWrt-123"                # 修改主机名称为OpenWrt-123(填0为不作修改)
 
+# 内核和系统分区大小(不是每个机型都可用)
+export Kernel_partition_size="0"            # 内核分区大小 (填写您想要的数值,数值以MB计算，填0为不作修改),如果你不懂就填0
+export Root_partition_size="0"              # 系统分区大小,每个机型默认值不一样 (填写您想要的数值,数值以MB计算，填0为不作修改),如果你不懂就填0
+
 # 默认主题设置
 export Mandatory_theme="argon"              # 将bootstrap替换您需要的主题为必选主题(可自行更改您要的,源码要带此主题就行,填写名称也要写对) (填写主题名称,填0为不作修改)
 export Default_theme="argon"                # 多主题时,选择某主题为默认第一主题 (填写主题名称,填0为不作修改)
@@ -28,7 +32,7 @@ export Enable_IPV4_function="0"             # 编译IPV4固件(1为启用命令,
 
 # OpenClash
 export OpenClash_branch="master"            # OpenClash代码选择分支（master 或 dev）(填0为不需要此插件)
-export OpenClash_Core="1"                   # 编译固件增加OpenClash时,把核心下载好,单核心为3MB左右大小(填1为下载单核{dev},2为下载三核{dev/meta/premium},0为不需要核心)
+export OpenClash_Core="2"                   # 增加OpenClash时,把核心下载好,(填1为下载{dev}单核,填2为下载{dev/meta/premium}三核,填0为不需要核心)
 
 # 个性签名,默认增加年月日[$(TZ=UTC-8 date "+%Y.%m.%d")]
 export Customized_Information="$(TZ=UTC-8 date "+%Y.%m.%d")"  # 个性签名,你想写啥就写啥，(填0为不作修改)
@@ -49,24 +53,12 @@ export Disable_53_redirection="1"            # 删除DNS强制重定向53端口�
 export Cancel_running="1"                    # 取消路由器每天跑分任务(个别源码本身不带此功能)(1为启用命令,填0为不作修改)
 
 
-
-# 设置打包固件的机型和内核组合（可用内核是时时变化的,过老的内核就删除的，所以要选择什么内核请看说明）
-# export amlogic_model="此内填入可用芯片，或多芯片组合。比如：s905d 或 s905d_s905x2"
-# export amlogic_kernel="此内填入内核，或者多内核组合。比如：5.4.233 或 5.4.233_6.1.14"
-# export auto_kernel="true" 是否自动检测最新内核来打包（true为是，false为不是）
-# 自动检测最新内核,比如您写的是 5.15.25 当前最高版本为 5.15.78 的话就自动打包5.15.78的,不自动检测的话,就打包 5.15.25
-# export rootfs_size="填入不低于500的数值，数值越大空间越大，一般960够了"
-# 可用芯片如下：
-# a311d,s922x,s922x-reva,s922x-ct2000,s905x3,s905x3-b,s905x2,s912,s912-m8s,tqc-a01,tanix-tx6,
-# s905d,s905d-ki,s905x,s905w,s905,s905l2,s905l3,s905l3a,s905l3b,s905lb-r3300l,rock5b,
-# h88k,r66s,r68s,h66k,h68k,e25,eaidk-610,king3399,tn3399,kylin3399,beikeyun,l1pro,vplus
-# 对应支持什么机型，也不是所有芯片组都可以打包所有版本内核的，有个别分内核版本，请看说明
-# 可选内核 （5.4.xx） （5.10.xx） （5.15.xx） （6.1.xx）
-
+# 晶晨CPU系列打包固件设置(不懂请看说明)
 export amlogic_model="s905d"
 export amlogic_kernel="5.10.01_6.1.01"
 export auto_kernel="true"
 export rootfs_size="960"
+export kernel_repo="https://github.com/ophub/kernel/tree/kernel_stable/pub"
 
 
 

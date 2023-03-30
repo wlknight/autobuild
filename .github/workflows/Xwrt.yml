@@ -26,8 +26,16 @@ on:
           - 'master'
           - '21.10'
           - '22.03'
+          - 'fix-arm-trusted-firmware-mediatek'
+          - 'fix-kdump'
           - 'pr-fix-nand_do_platform_check'
+          - 'master-mt7981'
+          - 'pr-dnsmasq'
+          - 'pr-fix-nand_do_platform_check'
+          - 'pr-ipq40xx-rt-ac42u'
           - 'pr-rm-ax6000'
+          - 'pr-wolfssl'
+          - 'switch_ports_status'
       CONFIG_FILE:
         description: '请选择配置文件'
         required: true
@@ -188,8 +196,8 @@ jobs:
       if: env.REPO_TOKEN
       run: |
         cd openwrt
-        source $BUILD_PATH/$DIY_PART_SH
-        source build/${{ env.FOLDER_NAME }}/common.sh && Diy_Publicarea
+        source ${BUILD_PATH}/common.sh && Diy_zdypartsh
+        source ${BUILD_PATH}/common.sh && Diy_Publicarea
         
     - name: 加载源、补丁和files文件夹
       if: env.REPO_TOKEN
